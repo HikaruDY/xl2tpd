@@ -1,7 +1,5 @@
 # xl2tpd
 
-[![Build Status](https://travis-ci.org/xelerance/xl2tpd.svg?branch=1.3.16dev)](https://travis-ci.org/xelerance/xl2tpd)
-
 xl2tpd is an implementation of the Layer 2 Tunneling Protocol
 as defined by [RFC 2661](https://tools.ietf.org/rfc/rfc2661.txt).
 L2TP allows you to tunnel PPP over UDP. Some ISPs use L2TP to tunnel user
