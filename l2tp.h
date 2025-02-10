@@ -59,10 +59,10 @@ typedef unsigned long long _u64;
 #define CONTROL_PIPE_REQ_LNS_REMOVE 'w'     /* Get status of LNS */
 
 #define BINARY "xl2tpd"
-#define SERVER_VERSION "xl2tpd-1.3.18"
-#define VENDOR_NAME "xelerance.com"
-#ifndef PPPD
-#define PPPD		"/usr/sbin/pppd"
+#define SERVER_VERSION "xl2tpd-1.3.18.1"
+#define VENDOR_NAME "oss.xprj.org"
+#ifndef PPPD_DEFAULT_PATH
+#define PPPD_DEFAULT_PATH "/usr/sbin/pppd"
 #endif
 #define CALL_PPP_OPTS "defaultroute"
 #define FIRMWARE_REV	0x0690  /* Revision of our firmware (software, in this case) */

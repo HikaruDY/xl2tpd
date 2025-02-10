@@ -43,6 +43,8 @@
 #include <arpa/inet.h>
 #include "l2tp.h"
 
+static char PPPD[MAXSTRLEN];
+
 struct tunnel_list tunnels;
 int rand_source;
 int ppd = 1;                    /* Packet processing delay */
@@ -1654,6 +1656,7 @@ static void usage(void) {
     printf("\nxl2tpd version:  %s\n", SERVER_VERSION);
     printf("Usage: xl2tpd [-c <config file>] [-s <secret file>] [-p <pid file>]\n"
             "              [-C <control file>] [-D] [-l] [-q <tos decimal value for control>]\n"
+            "              [-e <pppd binary>]\n"
             "              [-v, --version]\n");
     printf("\n");
     exit(1);
@@ -1726,6 +1729,13 @@ static void init_args(int argc, char *argv[])
             else
                 strncpy(gconfig.controlfile,argv[i],
                         sizeof(gconfig.controlfile) - 1);
+        }
+        else if (! strncmp(argv[i],"-e",2)) {
+            if(++i == argc)
+                usage();
+            else
+                strncpy(PPPD,argv[i],
+                        sizeof(PPPD) - 1);
         }
         else if (! strncmp(argv[i],"-q",2)) {
             if(++i == argc)
@@ -1857,6 +1867,9 @@ static void init (int argc,char *argv[])
     struct lac *lac;
     struct in_addr listenaddr;
     struct utsname uts;
+
+    //Set PPPD to default path from l2tp.h
+    strcpy(PPPD, PPPD_DEFAULT_PATH);
 
     init_args (argc,argv);
     srand( time(NULL) );
